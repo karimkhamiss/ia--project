@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Leaders";
+    Layout = "~/Views/Shared/_control-panel-1.cshtml";
+}
+@section popups
+{
+    @Html.Partial("../forms/users/add")
+    @Html.Partial("../forms/users/update")
+    @Html.Partial("../forms/users/delete")
+}
+<section class="leaders" id="leaders">
+    <div class="container-fluid">
+        <h2 class="section-title">
+            Leaders
+        </h2>
+        <div class="leaders-contents">
+            <div class="input-container col-md-10">
+                <label for="search" class="input-label">Search For Project</label>
+                <input type="text" class="cards-search" id="search">
+            </div>
+            <button data-popup="add-user" class="red-btn col-md-2">
+                Add
+            </button>
+            <div class="clearfix"></div>
+            <div class="cards">
+                <div class="card">
+                    <div class="image">
+                        <div class="background"></div>
+                        <img src="~/Content/img/users/default.gif">
+                        <!--<img src="img/projects/default.jpg">-->
+                        <div class="options">
+                            <a data-popup="delete-user"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                            <a data-popup="update-user"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
+                            <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h3>Karim Khamiss</h3>
+                        <h4>Marketing Leader</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

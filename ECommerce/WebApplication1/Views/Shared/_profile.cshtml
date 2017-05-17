@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <title>@ViewBag.title</title>
+    @Styles.Render("~/bundles/css/main")
+    @Styles.Render("~/bundles/css/profile")
+    @RenderSection("styles",false)
+</head>
+<body>
+    <div class="background"></div>
+    @RenderSection("popups", false)
+    @Html.Partial("_header")
+    <section class="header">
+        <div class="container">
+            <div class="col-md-8">
+                <div class="image fl-left col-md-5">
+                    @RenderSection("image", true)
+                </div>
+                <div class="info fl-left col-md-7">
+                    @RenderSection("info", true) 
+                </div>
+            </div>
+            <div class="options col-md-4 text-left">
+              @RenderSection("options", true)
+            </div>
+        </div>
+    </section>
+    @RenderBody()
+    @Html.Partial("_footer")
+    @Scripts.Render("~/bundles/js/main")
+    @Scripts.Render("~/bundles/js/profile")
+    @RenderSection("scripts", false)
+</body>
+</html>

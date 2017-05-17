@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Project Title";
+    Layout = "~/Views/Shared/_profile.cshtml";
+}
+
+@section styles
+    {
+    <style>
+       .rate i
+       {
+           transition:.4s all ease-in-out;
+           cursor:pointer;
+       }
+    </style>
+}
+@section popups
+{
+@Html.Partial("../forms/projects/assign")
+@Html.Partial("../forms/projects/invite")
+@Html.Partial("../forms/projects/finish")
+@Html.Partial("../forms/projects/remove")
+@Html.Partial("../forms/projects/leave")
+@Html.Partial("../forms/projects/rate")
+
+}
+@section image{<img src="~/Content/img/project.jpg">>}
+@section info
+{
+    <h4>Project Title</h4>
+<p class="grey-fg-color">
+    One morning, when Gregor Samsa woke from
+    troubled dreams, he himself transformed in bed into
+    a horrible vermin. He his armour-back.
+    One morning, when Gregor Samsa woke from
+    troubled dreams, he himself transformed in bed into
+    a horrible vermin. He his armour-back.
+</p>
+<div class="status">
+    <span class="not-assigned">Not Assigned</span>
+    <span class="delivered">Delivered</span>
+    <span class="on-progress">On Progress</span>
+</div>
+}
+@section options
+{
+    <button class="red-btn" data-popup="leave-project">Leave</button>
+<button class="red-btn" data-popup="finish-project">Finish</button>
+<button class="red-btn" data-popup="invite">Invite</button>
+<button class="red-btn" data-popup="assign-director">Assign To Director</button>
+}
+<section class="current-projects">
+    <div class="container">
+        <h2 class="section-title text-left">
+            Team
+        </h2>
+        <div class="cards">
+            <div class="card">
+                <div class="image">
+                    <div class="background"></div>
+                   <img src="~/Content/img/users/default.gif">
+                    <div class="options">
+                        <a data-popup="rate-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-star"></i></button></a>
+                        <a data-popup="remove-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                        <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Karim Khamiss</h3>
+                    <h4>Marketing Director</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+    {
+    <script>
+        $("#rate-member-popup div.rate i").click(function () {
+           // alert($(this).previous().html())
+            $(this).removeClass("fa-star-o").addClass("fa-star")
+        })
+    </script>
+
+}
+
+

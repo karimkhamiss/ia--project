@@ -1,0 +1,41 @@
+﻿<section class="control-panel-user-info text-center red-bg-color">
+    <div class="image">
+        <img src="~/Content/img/users/default.gif" alt="">
+    </div>
+    <div class="text-center table-container">
+        <table>
+            <tr>
+                <td class="dark-fg-color">
+                    Name
+                </td>
+                <td class="red-fg-color">
+                    @Session["firstname"] @Session["lastname"] 
+                </td>
+            </tr>
+            <tr>
+                <td class="dark-fg-color">
+                    Job Description
+                </td>
+                <td class="red-fg-color">
+                    @Session["role_name"]
+                </td>
+            </tr>
+            <tr>
+                <td class="dark-fg-color">
+                    Phone
+                </td>
+                <td class="red-fg-color">
+                    @Session["phone"]
+                </td>
+            </tr>
+            <tr>
+                <td class="dark-fg-color">
+                    Email
+                </td>
+                <td class="red-fg-color">
+                    @Session["email"]
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

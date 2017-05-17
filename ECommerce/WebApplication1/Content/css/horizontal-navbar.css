@@ -1,0 +1,93 @@
+header
+{
+    height: 80px;
+    background: #fff;
+    box-shadow: 0px 5px 7px 0px #a8a8a8;
+    margin-bottom: 10px;
+    padding:0 50px;
+}
+header .logo
+{
+    font-size:22px;
+    color:#dc4242;
+    line-height: 80px;
+}
+header div.notification-icon
+{
+    //line-height: 80px;
+    position: relative;
+margin-top:31px;
+}
+header div.notification-icon span.notifications-count
+{
+    background: #dc4242;
+    font-size: 9px;
+    color: #fff;
+    position: absolute;
+    top: -13px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+header div.notification-body
+{
+    position: absolute;
+    background: #fff;
+    box-shadow: 0px 5px 7px 0px #a8a8a8;
+    width: 350px;
+    z-index: 9;
+    padding: 10px;
+    margin-top: 5px;
+    right: 100px;
+    height: 400px;
+    overflow-y: scroll;
+}
+header div.notification-body ul li
+{
+    background: #fff;
+    box-shadow: 0px 2px 2px 0px #ddd;
+    padding:10px 15px;
+    padding-bottom: 0;
+    margin-bottom:5px;
+    cursor: default;
+    font-size:12.5px;
+}
+header div.notification-body ul li button
+{
+    font-size:12px;
+}
+header div.notification-body ul li.unseen
+{
+    background: #fafafa;
+
+}
+header div.notification-body ul li>a
+{
+    color:#dc4242;
+}
+header div.notification-body ul li i
+{
+
+}
+
+header .user
+{
+    line-height: 80px;
+}
+header .dropdown-menu
+{
+    top: 70%;
+    left: 80px;
+    width:80px;
+}
+header .user img
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 5px;
+}

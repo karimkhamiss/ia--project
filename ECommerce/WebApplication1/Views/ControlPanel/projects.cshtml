@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_control-panel-1.cshtml";
+}
+@section popups
+{
+    @Html.Partial("../forms/projects/add")
+    @Html.Partial("../forms/projects/update")
+    @Html.Partial("../forms/projects/delete")
+}
+<section class="projects" id="projects">
+    <div class="container-fluid">
+        <h2 class="section-title">
+            Projects
+        </h2>
+        <div class="projects-contents">
+            <div class="input-container col-md-8">
+                <label for="search" class="input-label">Search For Project</label>
+                <input type="text" class="cards-search" id="search">
+            </div>
+            <div class="col-md-2">
+                <select name="project-status">
+                    <option>Project Status</option>
+                    <option>All</option>
+                    <option>Delivered</option>
+                    <option>On Progress</option>
+                    <option>Not Assigned</option>
+                </select>
+            </div>
+            <button data-popup="add-project" class="red-btn col-md-2">
+                Add
+            </button>
+            <div class="clearfix"></div>
+            <div class="cards">
+                <div class="card">
+                    <div class="image">
+                        <div class="background"></div>
+                        <img src="~/Content/img/project.jpg">
+                        <!--<img src="~/Content/img/projects/default.jpg">-->
+                        <div class="options">
+                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
+                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h3>Project Title</h3>
+                        <div class="customer-info">
+                            <a href="#">
+                                <div class="info fl-left">
+                                    <img src="~/Content/img/users/default.gif">
+                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
+                                    <span class="dark-fg-color">Karim Khamiss</span>
+                                </div>
+                            </a>
+                            <div class="date fl-right">
+                                <span class="grey-fg-color">2 Days Ago</span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="status text-center">
+                                <span class="delivered">Delivered</span>
+                                <!--<span class="on-progress">On Progress</span>-->
+                                <!--<span class="not-assigned">Not Assigned</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <div class="background"></div>
+                        <img src="~/Content/img/project.jpg">
+                        <!--<img src="~/Content/img/projects/default.jpg">-->
+                        <div class="options">
+                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
+                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h3>Project Title</h3>
+                        <div class="customer-info">
+                            <a href="#">
+                                <div class="info fl-left">
+                                    <img src="~/Content/img/users/default.gif">
+                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
+                                    <span class="dark-fg-color">Karim Khamiss</span>
+                                </div>
+                            </a>
+                            <div class="date fl-right">
+                                <span class="grey-fg-color">2 Days Ago</span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="status text-center">
+                                <!--<span class="delivered">Delivered</span>-->
+                                <span class="on-progress">On Progress</span>
+                                <!--<span class="not-assigned">Not Assigned</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <div class="background"></div>
+                        <img src="~/Content/img/project.jpg">
+                        <!--<img src="~/Content/img/projects/default.jpg">-->
+                        <div class="options">
+                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
+                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h3>Project Title</h3>
+                        <div class="customer-info">
+                            <a href="#">
+                                <div class="info fl-left">
+                                    <img src="~/Content/img/users/default.gif">
+                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
+                                    <span class="dark-fg-color">Karim Khamiss</span>
+                                </div>
+                            </a>
+                            <div class="date fl-right">
+                                <span class="grey-fg-color">2 Days Ago</span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="status text-center">
+                                <!--<span class="delivered">Delivered</span>-->
+                                <!--<span class="on-progress">On Progress</span>-->
+                                <span class="not-assigned">Not Assigned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+        $("select[name='project-status']").change(function () {
+            var filter = $(this).val();
+            if (filter == "All")
+            {
+                $(".cards .card").show(300);
+            }
+            else
+            {
+                var container = $(this).parent().siblings(".cards").find(".card .status span");
+                container.each(function () {
+                    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                        $(this).parent().parent().parent().parent().hide(300);
+                    } else {
+                        $(this).parent().parent().parent().parent().show(300);
+                    }
+                });
+            }
+        });
+    </script>
+}
+

@@ -1,0 +1,24 @@
+header
+{
+    height: 200px;
+    background: url("../img/header.jpg");
+    background-size: 100% 100%;
+}
+.new-project
+{
+    padding-left: 40px;
+}
+.new-project button
+{
+    margin-top: 50px;
+}
+.new-project p
+{
+    font-size: 23px;
+    color:#aaa;
+    line-height: 1.7;
+}
+.projects
+{
+
+}

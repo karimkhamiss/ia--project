@@ -1,0 +1,16 @@
+﻿<html>
+<head>
+    <title>@ViewBag.title</title>
+    @Styles.Render("~/bundles/css/main")
+    @RenderSection("styles",false)
+    <link href="~/Content/css/media.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="background"></div>
+    @RenderSection("popups", false)
+    @RenderBody()
+    @Html.Partial("_footer")
+    @Scripts.Render("~/bundles/js/main")
+    @RenderSection("scripts", false)
+</body>
+</html>

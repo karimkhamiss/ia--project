@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+    <title>@ViewBag.title</title>
+    @Styles.Render("~/bundles/css/main")
+    @Styles.Render("~/bundles/css/control-panel")
+    <style>
+         header
+        {
+            margin: 0;
+        }
+        .nav-container div.nav nav ul a {
+            text-align: left;
+            display: inline-block;
+        }
+        .nav-container div.nav nav
+        {
+            position: static;
+        }
+        .nav-container div.nav
+        {
+            position: static;
+            /*top: 80px;*/
+            /*left: 0;*/
+            width: 100% !important;
+            height: 66px;
+            overflow: hidden;
+            z-index:99;
+            text-align: center;
+        }
+        div.table-container
+        {
+            overflow-x: scroll;
+        }
+    </style>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <div class="background"></div>
+    @RenderSection("popups", false)
+    @Html.Partial("_header")
+    <div class="page-container">
+            @Html.Partial("_nav")
+        <div class="left col-md-4">
+            @Html.Partial("_info")
+        </div>
+        <div class="right col-md-8">
+            @RenderBody()
+        </div>
+        <div class="clearfix"></div>
+    @Html.Partial("_footer")
+    @Scripts.Render("~/bundles/js/main")
+    @Scripts.Render("~/bundles/js/control-panel")
+    @RenderSection("scripts", false)
+</body>
+</html>

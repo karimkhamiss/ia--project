@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Karim Khamiss";
+    Layout = "~/Views/Shared/_profile.cshtml";
+}
+
+@section styles
+    {
+    <style>
+        .rating
+{
+    margin-left:40px;
+}
+    </style>
+}
+@section popups
+{
+    @Html.Partial("../forms/users/assign")
+    @Html.Partial("../forms/users/invite")
+
+}
+                @section image{<img src="~/Content/img/users/default.gif">}
+@section info
+{
+    <h4>Karim Khamiss</h4>
+<h5 class="grey-fg-color">
+    Marketing Director
+</h5>
+<p>
+    <i class="fa fa-phone"></i>
+    01210073443
+</p>
+<p>
+    <i class="fa fa-envelope"></i>
+    karim.khamiss@gmail.com
+</p>
+<div class="rating">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-half-empty"></i>
+    <i class="fa fa-star-o"></i>
+</div>
+}
+@section options
+{
+<button class="red-btn" data-popup="invite">Invite</button>
+<button class="red-btn" data-popup="assign-project">Assign Project</button>
+    }
+<section class="current-projects">
+    <div class="container">
+        <h2 class="section-title text-left">
+            Current Projects
+        </h2>
+        <div class="cards">
+            <div class="card">
+                <div class="image">
+                    <div class="background"></div>
+                    <img src="~/Content/img/project.jpg">
+                    <div class="options">
+                        <a href="project-profile.html"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Project Title</h3>
+                    <div class="customer-info">
+                        <a href="user-profile.html">
+                            <div class="info fl-left">
+                                <img src="~/Content/img/users/default.gif">
+                                <span class="dark-fg-color">Karim Khamiss</span>
+                            </div>
+                        </a>
+                        <div class="date fl-right">
+                            <span class="grey-fg-color">2 Days Ago</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts
+    {
+
+}
+
+

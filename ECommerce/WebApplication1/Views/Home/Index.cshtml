@@ -1,0 +1,62 @@
+﻿@{ 
+    ViewBag.title = "Welcome to E-Commerce";
+}
+@section styles
+    {
+    
+    <style>
+    header {
+        height: 580px;
+        background: url("/Content/img/header01.jpg");
+        background-size: 100% 100%;
+        position: relative;
+    }
+
+        header .text {
+            color: #fff;
+            margin-top: 15%;
+        }
+
+            header .text h1 {
+                text-transform: uppercase;
+                border-bottom: 1px solid #fff;
+                padding: 10px;
+                letter-spacing: 1px;
+            }
+
+            header .text p {
+                font-size: 20px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            header .text button {
+                margin-right: 10px;
+            }
+            </style>
+            }
+@section popups
+{
+    @Html.Partial("../forms/users/signin")
+    @Html.Partial("../forms/users/add")
+    }
+    <header>
+        <div class="container text-left">
+            <div class="text col-md-8">
+                <h1>
+                    It's time to create your project
+                </h1>
+                <p>
+                    We have a professional team that will lead you to success and make your project better than you imagine
+                </p>
+                <button class="red-btn" data-popup="signin">Signin</button>
+                <button class="red-btn" data-popup="add-user">Signup</button>
+            </div>
+
+
+        </div>
+    </header>
+@section scripts
+    {
+    
+    }

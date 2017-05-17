@@ -1,0 +1,34 @@
+﻿@model Ecommerce.User
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form action="/action_page.php">
+        First name:<br>
+        <input type="text" name="firstname" value=@Model.first_name>
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname" value=@Model.last_name>
+        <br>
+        
+        Phone:<br>
+        <input type="text" name="firstname" value=@Model.phone>
+        <br>
+        Email:<br>
+        <input type="text" name="lastname" value=@Model.e_mail>
+        <br>
+        
+        Pic Path:<br>
+        <input type="text" name="firstname" value=@Model.picture>
+        <br><br />
+        <input type="submit" value="Update">
+    </form>
+
+
+</body>
+</html>

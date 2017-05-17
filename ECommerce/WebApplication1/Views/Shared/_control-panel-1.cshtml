@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <title>@ViewBag.title</title>
+    @Styles.Render("~/bundles/css/main")
+    @Styles.Render("~/bundles/css/control-panel")
+    <style>
+         div.nav
+    {
+        right:auto;
+        left:0;
+    }
+    div.page-container-content
+    {
+        float:right;
+    }
+    </style>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <div class="background"></div>
+    @RenderSection("popups", false)
+    @Html.Partial("_header")
+    <div class="page-container">
+        @Html.Partial("_nav")
+        <div class="page-container-content  col-md-10 fl-left">
+            @Html.Partial("_info")
+            @RenderBody()
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    @Html.Partial("_footer")
+    @Scripts.Render("~/bundles/js/main")
+    @Scripts.Render("~/bundles/js/control-panel")
+    @RenderSection("scripts", false)
+</body>
+</html>

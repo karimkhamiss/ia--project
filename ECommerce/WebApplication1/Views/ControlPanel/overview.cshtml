@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Overview";
+    Layout = "~/Views/Shared/_control-panel-1.cshtml";
+}
+
+<section class="overview" id="overview">
+    <div class="container-fluid">
+        <h2 class="section-title">
+            Overview
+        </h2>
+        <div class="overview-content">
+            <div class="statistics">
+                <div class="statistics-box">
+                    <span class="fl-left">Customers</span>
+                    <span class="fl-right">@ViewBag.CustomersCount</span>
+                </div>
+                <div class="statistics-box">
+                    <span class="fl-left">Directors</span>
+                    <span class="fl-right">@ViewBag.DirectorsCount</span>
+                </div>
+                <div class="statistics-box">
+                    <span class="fl-left">Leaders</span>
+                    <span class="fl-right">@ViewBag.LeadersCount</span>
+                </div>
+                <div class="statistics-box">
+                    <span class="fl-left">Trainees</span>
+                    <span class="fl-right">@ViewBag.TraineesCount</span>
+                </div>
+                <div class="statistics-box">
+                    <span class="fl-left">Assigned Projects</span>
+                    <span class="fl-right">@ViewBag.AssignedProjectsCount</span>
+                </div>
+                <div class="statistics-box">
+                    <span class="fl-left">Non Assigned Projects</span>
+                    <span class="fl-right">@ViewBag.ProjectsCount</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
