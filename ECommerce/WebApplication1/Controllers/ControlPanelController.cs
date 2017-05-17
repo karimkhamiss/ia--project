@@ -9,7 +9,7 @@ namespace Ecommerce.Controllers
 {
     public class ControlPanelController : Controller
     {
-        Entities db = new Entities();
+        Entities1 db = new Entities1();
         // GET: ControlPanel
         public ActionResult Index()
         {
@@ -22,7 +22,6 @@ namespace Ecommerce.Controllers
             ViewBag.TraineesCount = db.Users.Where(user => user.role_id == 4).Count();
             ViewBag.CustomersCount = db.Users.Where(user => user.role_id == 5).Count();
             ViewBag.ProjectsCount = db.Projects.Count();
-            ViewBag.AssignedProjectsCount = db.AssignedTeams.Count();
 
             return View();
         }

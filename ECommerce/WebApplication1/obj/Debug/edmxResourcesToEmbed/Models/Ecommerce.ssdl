@@ -28,19 +28,21 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="title" Type="varchar" MaxLength="50" />
-    <Property Name="describtion" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
     <Property Name="picture" Type="varchar" MaxLength="50" />
-    <Property Name="approved" Type="int" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="status" Type="int" />
+    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="team_id" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Request">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="request_id" Type="numeric" Precision="18" Scale="0" />
     <Property Name="sender_id" Type="numeric" Precision="18" Scale="0" />
     <Property Name="reciever_id" Type="numeric" Precision="18" Scale="0" />
@@ -75,14 +77,14 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="project_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="TeamMembers">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="team_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="user_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="rate" Type="int" Nullable="false" />
@@ -91,7 +93,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="first_name" Type="varchar" MaxLength="50" />
     <Property Name="last_name" Type="varchar" MaxLength="50" />
     <Property Name="phone" Type="numeric" Precision="18" Scale="0" />
@@ -172,6 +174,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Project_Team">
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="team_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Request_RequestType">
     <End Role="RequestType" Type="Self.RequestType" Multiplicity="0..1" />
     <End Role="Request" Type="Self.Request" Multiplicity="*" />
@@ -233,7 +247,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_User_Project">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Project" Type="Self.Project" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -241,6 +255,18 @@
       </Principal>
       <Dependent Role="Project">
         <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="role_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -280,6 +306,10 @@
       <End Role="Project" EntitySet="Project" />
       <End Role="Team" EntitySet="Team" />
     </AssociationSet>
+    <AssociationSet Name="FK_Project_Team" Association="Self.FK_Project_Team">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
     <AssociationSet Name="FK_Request_RequestType" Association="Self.FK_Request_RequestType">
       <End Role="RequestType" EntitySet="RequestType" />
       <End Role="Request" EntitySet="Request" />
@@ -303,6 +333,10 @@
     <AssociationSet Name="FK_User_Project" Association="Self.FK_User_Project">
       <End Role="User" EntitySet="User" />
       <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

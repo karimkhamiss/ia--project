@@ -172,15 +172,15 @@
     <Content Include="Content\img\user.jpg" />
     <Content Include="Content\img\users\default.gif" />
     <Content Include="Global.asax" />
-    <Content Include="Models\IAContext.Context.tt">
+    <Content Include="Models\Ecommerce.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IAContext.edmx</DependentUpon>
-      <LastGenOutput>IAContext.Context.cs</LastGenOutput>
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+      <LastGenOutput>Ecommerce.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\IAContext.tt">
+    <Content Include="Models\Ecommerce.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IAContext.edmx</DependentUpon>
-      <LastGenOutput>IAContext.cs</LastGenOutput>
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+      <LastGenOutput>Ecommerce.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -203,6 +203,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
+    <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TraineeController.cs" />
@@ -210,53 +211,53 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AssignedTeam.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ecommerce.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ecommerce.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ecommerce.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ecommerce.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Feedback.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\IAContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IAContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\IAContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IAContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\IAContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IAContext.edmx</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Message.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Project.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Request.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RequestType.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamMember.cs">
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>IAContext.tt</DependentUpon>
+      <DependentUpon>Ecommerce.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -265,13 +266,6 @@
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\IAContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>IAContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\IAContext.edmx.diagram">
-      <DependentUpon>IAContext.edmx</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\ControlPanel\customers.cshtml" />
@@ -333,6 +327,14 @@
     <Content Include="Content\fonts\Montserrat-Thin.ttf" />
     <Content Include="Content\fonts\Montserrat.zip" />
     <Content Include="Views\ControlPanel\_ViewStart.cshtml" />
+    <Content Include="Views\forms\projects\choose.cshtml" />
+    <EntityDeploy Include="Models\Ecommerce.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Ecommerce.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Ecommerce.edmx.diagram">
+      <DependentUpon>Ecommerce.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -344,6 +346,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\Ajax\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Director\" />
     <Folder Include="Views\Trainee\" />
   </ItemGroup>
   <ItemGroup>

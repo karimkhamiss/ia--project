@@ -11,7 +11,7 @@ namespace Ecommerce.Controllers
    
     public class UserController : Controller
     {
-        public Entities db = new Entities();
+        public Entities1 db = new Entities1();
         // GET: User
         public ActionResult Index()
         {
@@ -35,9 +35,6 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Login()
         {
-
-
-            Entities db = new Entities();
             var email = Request.Form["email"];
             var password = Request.Form["password"];
             var user = db.Users.Where(usr => usr.e_mail == email && usr.password == password).SingleOrDefault();

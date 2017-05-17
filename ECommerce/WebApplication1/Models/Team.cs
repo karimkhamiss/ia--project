@@ -17,17 +17,17 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Team()
         {
-            this.AssignedTeams = new HashSet<AssignedTeam>();
+            this.Projects = new HashSet<Project>();
+            this.TeamMembers = new HashSet<TeamMember>();
         }
     
         public decimal id { get; set; }
-        public Nullable<decimal> user_id { get; set; }
-        public Nullable<decimal> project_id { get; set; }
-        public Nullable<double> rate { get; set; }
+        public decimal project_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssignedTeam> AssignedTeams { get; set; }
         public virtual Project Project { get; set; }
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Project> Projects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamMember> TeamMembers { get; set; }
     }
 }

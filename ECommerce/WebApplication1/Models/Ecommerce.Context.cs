@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities1()
+            : base("name=Entities1")
         {
         }
     
@@ -25,7 +25,6 @@ namespace WebApplication1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AssignedTeam> AssignedTeams { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
@@ -35,6 +34,7 @@ namespace WebApplication1.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<TeamMember> TeamMembers { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

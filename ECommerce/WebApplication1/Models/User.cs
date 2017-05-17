@@ -23,7 +23,7 @@ namespace WebApplication1.Models
             this.Projects = new HashSet<Project>();
             this.Requests = new HashSet<Request>();
             this.Requests1 = new HashSet<Request>();
-            this.Teams = new HashSet<Team>();
+            this.TeamMembers = new HashSet<TeamMember>();
         }
     
         public decimal id { get; set; }
@@ -47,8 +47,8 @@ namespace WebApplication1.Models
         public virtual ICollection<Request> Requests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Requests1 { get; set; }
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<TeamMember> TeamMembers { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

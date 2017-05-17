@@ -12,15 +12,14 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AssignedTeam
+    public partial class TeamMember
     {
-        public decimal id { get; set; }
-        public Nullable<decimal> team_id { get; set; }
-        public Nullable<decimal> project_id { get; set; }
-        public Nullable<System.DateTime> start_date { get; set; }
-        public Nullable<System.DateTime> end_date { get; set; }
+        public decimal Id { get; set; }
+        public decimal team_id { get; set; }
+        public decimal user_id { get; set; }
+        public int rate { get; set; }
     
-        public virtual Project Project { get; set; }
         public virtual Team Team { get; set; }
+        public virtual User User { get; set; }
     }
 }

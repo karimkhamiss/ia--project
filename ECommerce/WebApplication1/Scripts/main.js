@@ -4,10 +4,10 @@ $(document).ready(function(){
         if(this.hasAttribute('data-popup'))
         {
             popup = $(this).attr("data-popup");
-            if (this.hasAttribute('data-id'))
+            if (this.hasAttribute('data-project-id'))
             {
-                var id = $(this).attr("data-id")
-                $("#" + popup + "-popup input[name='id']").val(id);
+                var project_id = $(this).attr("data-project-id")
+                $("#" + popup + "-popup input[name='project_id']").val(project_id);
             }
             $(".background").fadeIn(200,function(){
                 $("#"+popup+"-popup").css("top","65px");
