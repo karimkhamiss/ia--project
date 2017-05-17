@@ -15,13 +15,12 @@
             Projects
         </h2>
         <div class="projects-contents">
-            <div class="input-container col-md-8">
+            <div class="input-container col-md-7">
                 <label for="search" class="input-label">Search For Project</label>
                 <input type="text" class="cards-search" id="search">
             </div>
-            <div class="col-md-2">
-                <select name="project-status">
-                    <option>Project Status</option>
+            <div class="col-md-3">
+                <select name="project-status" class="selectpicker" title="Project Status">
                     <option>All</option>
                     <option>Delivered</option>
                     <option>On Progress</option>
@@ -142,14 +141,16 @@
 {
     <script>
         $("select[name='project-status']").change(function () {
+            alert($(this).parent().parent().html());
             var filter = $(this).val();
             if (filter == "All")
             {
                 $(".cards .card").show(300);
             }
+
             else
             {
-                var container = $(this).parent().siblings(".cards").find(".card .status span");
+                var container = $(this).parent().parent().siblings(".cards").find(".card .status span");
                 container.each(function () {
                     if ($(this).text().search(new RegExp(filter, "i")) < 0) {
                         $(this).parent().parent().parent().parent().hide(300);
@@ -159,6 +160,6 @@
                 });
             }
         });
-    </script>
+</script>
 }
 

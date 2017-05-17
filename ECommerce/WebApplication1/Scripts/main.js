@@ -3,19 +3,15 @@ $(document).ready(function(){
     $("*").click(function(){
         if(this.hasAttribute('data-popup'))
         {
-            popup = $(this).attr("data-popup");
+            popup  = $(this).attr("data-popup");
             $(".background").fadeIn(200,function(){
-                // $(".contain").css("-webkit-filter","blur(10px)");
                 $("#"+popup+"-popup").css("top","65px");
-                $("#"+popup+"-popup *").delay(10).fadeIn(200);
             })
         }
     })
     $(".popup-close ,body>.background").click(function(){
-        $("#"+popup+"-popup").css("top","-100px");
-        $("#"+popup+"-popup *").delay(10).fadeOut(200);
+        $("#"+popup+"-popup").css("top","-1000px");
         $("body>.background").fadeOut(200,function(){
-            // $(".contain").css("-webkit-filter","blur(10px)");
         })
     })
     height = $("div.page-container").scrollHeight;
