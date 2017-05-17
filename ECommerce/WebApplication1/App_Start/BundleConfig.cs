@@ -11,8 +11,8 @@ namespace Ecommerce
 
             bundles.Add(new ScriptBundle("~/bundles/js/main").Include(
                       "~/Scripts/jquery.min.js",
-                      "~/Scripts/bootstrap2.js",
-                      "~/Scripts/select.min.js.js",
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/bootstrap-select.min.js",
                       "~/Scripts/main.js",
                       "~/Scripts/handler.js"));
             bundles.Add(new ScriptBundle("~/bundles/js/profile").Include(
@@ -26,8 +26,8 @@ namespace Ecommerce
                       ));
             bundles.Add(new StyleBundle("~/bundles/css/main").Include(
                       "~/Content/css/bootstrap.min.css",
+                      "~/Content/css/bootstrap-select.min.css",
                       "~/Content/css/font-awesome.min.css",
-                      "~/Content/css/select.min.css",
                       "~/Content/css/main.css"
                       ));
             bundles.Add(new StyleBundle("~/bundles/css/profile").Include(

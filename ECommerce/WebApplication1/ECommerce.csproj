@@ -144,11 +144,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\control-panel.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\home-page.css" />
     <Content Include="Content\css\horizontal-navbar.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\pages.css" />
@@ -182,10 +184,12 @@
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap2.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\control-panel.js" />
     <Content Include="Scripts\handler.js" />
     <Content Include="Scripts\home-page.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\select.min.js" />
