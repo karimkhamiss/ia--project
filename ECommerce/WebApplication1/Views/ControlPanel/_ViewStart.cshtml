@@ -1,0 +1,11 @@
+﻿
+@{
+    if ((string)Session["role_name"] == "Admin" || (string)Session["role_name"] == "Director" || (string)Session["role_name"] == "Team Leader")
+    {
+        Layout = "~/Views/Shared/_control-panel-1.cshtml";
+    }
+    else if ((string)Session["role_name"] == "Trainee" || (string)Session["role_name"] == "Customer")
+    {
+        Layout = "~/Views/Shared/_control-panel-2.cshtml";
+    }
+}

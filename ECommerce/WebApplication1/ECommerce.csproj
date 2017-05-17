@@ -332,6 +332,7 @@
     <Content Include="Content\fonts\Montserrat-SemiBold.ttf" />
     <Content Include="Content\fonts\Montserrat-Thin.ttf" />
     <Content Include="Content\fonts\Montserrat.zip" />
+    <Content Include="Views\ControlPanel\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
