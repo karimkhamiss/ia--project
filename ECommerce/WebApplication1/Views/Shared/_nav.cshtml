@@ -2,33 +2,41 @@
     <div class="nav col-md-2">
         <nav>
             <ul>
-                <a href="/ControlPanel/Overview" class="red-fg-color bold">
-                    <i class="fa fa-globe red-fg-color"></i>
-                    Overview
-                </a>
-                <a href="/ControlPanel/Diagram" class="red-fg-color bold">
+                @if ((string)Session["role_name"] == "Admin")
+                {
+                    <a href="/ControlPanel/Overview" class="red-fg-color bold">
+                        <i class="fa fa-globe red-fg-color"></i>
+                        Overview
+                    </a>
+                }
+                @if ((string)Session["role_name"] == "Director" || (string)Session["role_name"] == "Team Leader" || (string)Session["role_name"] == "Trainee")
+                {
+                    <a href="/ControlPanel/Diagram" class="red-fg-color bold">
                     <i class="fa fa-bar-chart red-fg-color"></i>
                     Diagram
                 </a>
-                <a href="#" class="red-fg-color bold drop-down closed-toggle">
-                    <i class="fa fa-users red-fg-color"></i>
-                    Users
-                </a>
-                <div class="drop-down-items">
-                    <a href="/ControlPanel/Directors" class="red-fg-color bold">
-                        Directors
+                }
+                @if ((string)Session["role_name"] == "Admin")
+                {
+                    <a href="#" class="red-fg-color bold drop-down closed-toggle">
+                        <i class="fa fa-users red-fg-color"></i>
+                        Users
                     </a>
-                    <a href="/ControlPanel/Leaders" class="red-fg-color bold">
-                        Leaders
-                    </a>
-                    <a href="/ControlPanel/Trainees" class="red-fg-color bold">
-                        Trainees
-                    </a>
-                    <a href="/ControlPanel/Customers" class="red-fg-color bold">
-                        Customers
-                    </a>
-                </div>
-
+                    <div class="drop-down-items">
+                        <a href="/ControlPanel/Directors" class="red-fg-color bold">
+                            Directors
+                        </a>
+                        <a href="/ControlPanel/Leaders" class="red-fg-color bold">
+                            Leaders
+                        </a>
+                        <a href="/ControlPanel/Trainees" class="red-fg-color bold">
+                            Trainees
+                        </a>
+                        <a href="/ControlPanel/Customers" class="red-fg-color bold">
+                            Customers
+                        </a>
+                        </div>
+                        }
                 <a href="/ControlPanel/Projects" class="red-fg-color bold">
                     <i class="fa fa-suitcase red-fg-color"></i>
                     Projects
