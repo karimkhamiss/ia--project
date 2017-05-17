@@ -104,6 +104,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="last_name" ColumnName="last_name" />

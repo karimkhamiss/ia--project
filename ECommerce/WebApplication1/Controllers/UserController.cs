@@ -40,13 +40,12 @@ namespace Ecommerce.Controllers
             Entities db = new Entities();
             var email = Request.Form["email"];
             var password = Request.Form["password"];
-            var user = db.Users.Single(a => a.e_mail == email && a.first_name == password);
-            var role = db.Roles.Single(b => b.id == user.role_id);
+            var user = db.Users.Where(usr => usr.e_mail == email && usr.password == password).SingleOrDefault();
             if (user != null)
             {
                 Session["user_id"] = user.id;
                 Session["role_id"] = user.role_id;
-                Session["role_name"] = role.name ;
+                Session["role_name"] = user.Role.name ;
                 Session["firstname"] = user.first_name;
                 Session["lastname"] = user.last_name;
                 Session["email"] = user.e_mail;

@@ -129,6 +129,7 @@
     <NavigationProperty Name="Requests1" Relationship="Self.FK_Request_User1" FromRole="User" ToRole="Request" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
     <NavigationProperty Name="Teams" Relationship="Self.FK_User_Team" FromRole="User" ToRole="Team" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_AssignedTeam_Project">
     <End Role="Project" Type="Self.Project" Multiplicity="0..1" />

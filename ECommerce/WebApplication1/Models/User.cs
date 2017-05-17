@@ -32,9 +32,8 @@ namespace WebApplication1.Models
         public Nullable<decimal> phone { get; set; }
         public string e_mail { get; set; }
         public string picture { get; set; }
-        public string password { get; set; }
         public Nullable<decimal> role_id { get; set; }
-        
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }

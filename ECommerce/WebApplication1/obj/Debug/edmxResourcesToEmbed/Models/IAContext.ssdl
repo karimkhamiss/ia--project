@@ -101,6 +101,7 @@
     <Property Name="e_mail" Type="varchar" MaxLength="50" />
     <Property Name="picture" Type="varchar" MaxLength="50" />
     <Property Name="role_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_AssignedTeam_Project">
     <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
@@ -246,18 +247,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="role_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Team">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Team" Type="Self.Team" Multiplicity="*" />
@@ -329,10 +318,6 @@
     <AssociationSet Name="FK_User_Project" Association="Self.FK_User_Project">
       <End Role="User" EntitySet="User" />
       <End Role="Project" EntitySet="Project" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Team" Association="Self.FK_User_Team">
       <End Role="User" EntitySet="User" />
