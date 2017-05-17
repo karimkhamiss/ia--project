@@ -1,14 +1,3 @@
-﻿
-@{
-    if ((string)Session["role_name"] == "Admin")
-    {
-        Layout = "~/Views/Shared/_control-panel-1.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_control-panel-2.cshtml";
-    }
-    ViewBag.Title = @Session["role_name"];
- }
-
-@Session["role_name"]
+﻿@{ 
+    ViewBag.Title = "Control Panel";
+}

@@ -23,9 +23,12 @@
                 <label for="search" class="input-label">Search For Project</label>
                 <input type="text" class="cards-search" id="search">
             </div>
-            <button data-popup="add-user" class="red-btn col-md-2">
-                Add
-            </button>
+            @if((string)Session["role_name"] == "Admin")
+            {
+                <button data-popup="add-user" class="red-btn col-md-2">
+                    Add
+                </button>
+            }
             <div class="clearfix"></div>
             <div class="cards">
                 @foreach (var leader in leaders)
@@ -42,7 +45,10 @@
                                 <img src="~/Content/img/users/@leader.picture">
                             }
                             <div class="options">
-                                <a data-popup="delete-user" data-id="@leader.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                @if((string)Session["role_name"] == "Admin")
+                                {
+                                    <a data-popup="delete-user" data-id="@leader.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                }
                                 <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
                             </div>
                         </div>

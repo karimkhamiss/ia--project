@@ -60,7 +60,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle dark-fg-color" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        @if (Session["picture"] == null)
+                        @if((string)Session["picture"] == null)
                         {
                             <img src="~/Content/img/users/default.gif" alt="">
                         }

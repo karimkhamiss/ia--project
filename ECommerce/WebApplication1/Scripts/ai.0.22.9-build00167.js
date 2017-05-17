@@ -131,7 +131,7 @@ var Microsoft;
                 if (ApplicationInsights.Util.canUseSessionStorage()) {
                     var sessionStorageKeys = ApplicationInsights.Util.getSessionStorageKeys();
                     for (var i = 0; i < sessionStorageKeys.length; i++) {
-                        if (sessionStorageKeys[i].indexOf(_InternalLogging.AIInternalMessagePrefix) === 0) {
+                        if((string)SessionStorageKeys[i].indexOf(_InternalLogging.AIInternalMessagePrefix) === 0) {
                             ApplicationInsights.Util.removeSessionStorage(sessionStorageKeys[i]);
                         }
                     }
@@ -2682,7 +2682,7 @@ var Microsoft;
                 }
             };
             TelemetryContext.prototype._applySessionContext = function (envelope, sessionContext) {
-                if (sessionContext) {
+                if((string)SessionContext) {
                     var tagKeys = new AI.ContextTagKeys();
                     if (typeof sessionContext.id === "string") {
                         envelope.tags[tagKeys.sessionId] = sessionContext.id;

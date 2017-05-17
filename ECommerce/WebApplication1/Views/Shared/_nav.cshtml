@@ -12,9 +12,30 @@
                 @if ((string)Session["role_name"] == "Director" || (string)Session["role_name"] == "Team Leader" || (string)Session["role_name"] == "Trainee")
                 {
                     <a href="/ControlPanel/Diagram" class="red-fg-color bold">
-                    <i class="fa fa-bar-chart red-fg-color"></i>
-                    Diagram
-                </a>
+                        <i class="fa fa-bar-chart red-fg-color"></i>
+                        Diagram
+                    </a>
+                }
+                @if ((string)Session["role_name"] == "Director")
+                {
+                    <a href="/ControlPanel/Leaders" class="red-fg-color bold">
+                        <i class="fa fa-users red-fg-color"></i>
+                        Leaders
+                    </a>
+                }
+                @if ((string)Session["role_name"] == "Director" || (string)Session["role_name"] == "Team Leader")
+                {
+                    <a href="/ControlPanel/Trainees" class="red-fg-color bold">
+                        <i class="fa fa-users red-fg-color"></i>
+                        Trainees
+                    </a>
+                }
+                @if ((string)Session["role_name"] == "Customer")
+                {
+                    <a href="/ControlPanel/Directors" class="red-fg-color bold">
+                        <i class="fa fa-users red-fg-color"></i>
+                        Directors
+                    </a>
                 }
                 @if ((string)Session["role_name"] == "Admin")
                 {
