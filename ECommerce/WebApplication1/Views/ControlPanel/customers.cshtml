@@ -3,6 +3,10 @@
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_control-panel-1.cshtml";
 }
+@model IEnumerable<object>
+@{
+    List<WebApplication1.Models.User> customers = Model.ToArray()[0] as List<WebApplication1.Models.User>;
+}
 @section popups
 {
     @Html.Partial("../forms/users/add")
@@ -24,26 +28,38 @@
             </button>
             <div class="clearfix"></div>
             <div class="cards">
-                <div class="card">
-                    <div class="image">
-                        <div class="background"></div>
-                        <img src="~/Content/img/users/default.gif">
-                        <!--<img src="img/projects/default.jpg">-->
-                        <div class="options">
-                            <a data-popup="delete-user"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
-                            <a data-popup="update-user"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
-                            <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                @foreach (var customer in customers)
+                {
+                    <div class="card">
+                        <div class="image">
+                            <div class="background"></div>
+                            @if (customer.picture == null)
+                            {
+                                <img src="~/Content/img/users/default.gif">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/users/@customer.picture">
+                            }
+                            <div class="options">
+                                <a data-popup="delete-user" data-id="@customer.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h3>@customer.first_name @customer.last_name</h3>
+                            <h4>@customer.Role.name</h4>
                         </div>
                     </div>
-                    <div class="caption">
-                        <h3>Karim Khamiss</h3>
-                        <h4>Marketing Customer</h4>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
     </div>
 </section>
-
-
+@section scripts
+{
+    <script>
+        $("#add-user-popup select[name='role_id']").val(5);
+    </script>    
+}

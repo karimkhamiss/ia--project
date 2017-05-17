@@ -3,7 +3,12 @@ $(document).ready(function(){
     $("*").click(function(){
         if(this.hasAttribute('data-popup'))
         {
-            popup  = $(this).attr("data-popup");
+            popup = $(this).attr("data-popup");
+            if (this.hasAttribute('data-id'))
+            {
+                var id = $(this).attr("data-id")
+                $("#" + popup + "-popup input[name='id']").val(id);
+            }
             $(".background").fadeIn(200,function(){
                 $("#"+popup+"-popup").css("top","65px");
             })
