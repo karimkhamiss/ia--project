@@ -32,28 +32,24 @@ namespace Ecommerce.Controllers
         }
         public ActionResult directors()
         {
-            Entities db = new Entities();
             List<object> directors = new List<object>();
             directors.Add(db.Users.Where(users=>users.role_id == 2).ToList());
             return View(directors);
         }
         public ActionResult leaders()
         {
-            Entities db = new Entities();
             List<object> leaders = new List<object>();
             leaders.Add(db.Users.Where(users => users.role_id == 3).ToList());
             return View(leaders);
         }
         public ActionResult trainees()
         {
-            Entities db = new Entities();
             List<object> trainees = new List<object>();
             trainees.Add(db.Users.Where(users => users.role_id == 4).ToList());
             return View(trainees);
         }
         public ActionResult customers()
         {
-            Entities db = new Entities();
             List<object> customers = new List<object>();
             customers.Add(db.Users.Where(users => users.role_id == 5).ToList());
             return View(customers);

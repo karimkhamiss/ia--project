@@ -17,9 +17,10 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
-        public ActionResult Profile()
+        public ActionResult Profile(int id)
         {
-            return View();
+            var user = db.Users.Find(id);
+            return View(user);
         }
         public ActionResult ControlPanel_1()
         {

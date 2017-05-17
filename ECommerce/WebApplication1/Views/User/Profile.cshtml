@@ -1,9 +1,12 @@
 ﻿
+@model WebApplication1.Models.User
 @{
-    ViewBag.Title = "Karim Khamiss";
+    WebApplication1.Models.User user = Model as WebApplication1.Models.User;
+}
+@{
+    ViewBag.Title = @user.first_name +" "+ @user.last_name;
     Layout = "~/Views/Shared/_profile.cshtml";
 }
-
 @section styles
     {
     <style>
@@ -19,34 +22,55 @@
     @Html.Partial("../forms/users/invite")
 
 }
-                @section image{<img src="~/Content/img/users/default.gif">}
+@section image
+{
+    @if (user.picture == null)
+    {
+        <img src="~/Content/img/users/default.gif">
+    }
+    else
+    {
+        <img src="~/Content/img/users/@user.picture">
+    }
+}
 @section info
 {
-    <h4>Karim Khamiss</h4>
+    <h4>@user.first_name @user.last_name</h4>
 <h5 class="grey-fg-color">
-    Marketing Director
+    @user.Role.name
 </h5>
 <p>
     <i class="fa fa-phone"></i>
-    01210073443
+    @user.phone
 </p>
 <p>
     <i class="fa fa-envelope"></i>
-    karim.khamiss@gmail.com
+     @user.e_mail
 </p>
-<div class="rating">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star-half-empty"></i>
-    <i class="fa fa-star-o"></i>
-</div>
+    @if (user.role_id != 5)
+    {
+        <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-empty"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
+    }
+
 }
 @section options
 {
-<button class="red-btn" data-popup="invite">Invite</button>
-<button class="red-btn" data-popup="assign-project">Assign Project</button>
+    @if (((user.Role.name == "Trainee" || user.Role.name == "Team Leader") && (string)Session["role_name"] == "Director") ||
+        (user.Role.name == "Trainee" && (string)Session["role_name"] == "Team Leader"))
+    {
+        <button class="red-btn" data-popup="invite">Invite</button>
     }
+    @if ((string)Session["role_name"] == "Customer" && user.Role.name == "Director")
+        {
+        <button class="red-btn" data-popup="assign-project">Assign Project</button>
+        }
+ }
 <section class="current-projects">
     <div class="container">
         <h2 class="section-title text-left">
