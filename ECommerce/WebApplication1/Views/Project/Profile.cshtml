@@ -46,18 +46,63 @@
     @project.description
 </p>
 <div class="status">
-    <span class="not-assigned">Not Assigned</span>
-    <span class="delivered">Delivered</span>
-    <span class="on-progress">On Progress</span>
+    @if (project.status == 1)
+    {
+        <span class="not-assigned">Not Assigned</span>
+    }
+    else if (project.status == 2)
+    {
+        <span class="on-progress">On Progress</span>
+    }
+
+    else if (project.status == 3)
+    {
+        <span class="delivered">Delivered</span>
+    }
 </div>
 }
 @section options
 {
-    <button class="red-btn" data-project-id="@project.id" data-popup="leave-project">Leave</button>
-<button class="red-btn" data-project-id="@project.id" data-popup="finish-project">Finish</button>
-<button class="red-btn" data-project-id="@project.id" data-popup="invite">Invite</button>
-<button class="red-btn" data-project-id="@project.id" data-popup="choose-project">Choose Project</button>
-<button class="red-btn" data-project-id="@project.id" data-popup="assign-director">Assign To Director</button>
+    @{
+        var memberFlag = 0;
+        if (project.status !=1)
+        {
+            foreach (var TeamMember in project.Team.TeamMembers)
+            {
+                if (TeamMember.user_id == Convert.ToInt32(Session["user_id"]))
+                {
+                    memberFlag = 1;
+                    break;
+                }
+
+            }
+        }
+
+    }
+        @if (((string)Session["role_name"] != "Admin" || (string)Session["role_name"] != "Customer") && project.status == 2 && memberFlag==1)
+        {
+            <button class="red-btn" data-project-id="@project.id" data-popup="leave-project">Leave</button>
+        }
+    
+    @if (((string)Session["role_name"] == "Director" || (string)Session["role_name"] == "Team Leader")&&project.status==2)
+    {
+        <button class="red-btn" data-project-id="@project.id" data-popup="invite">Invite</button>
+    }
+    @if ((string)Session["role_name"] == "Director")
+    {
+        if (project.status == 1)
+        {
+            <button class="red-btn" data-project-id="@project.id" data-popup="choose-project">Choose Project</button>
+        }
+        else if (project.status == 2)
+        {
+            <button class="red-btn" data-project-id="@project.id" data-popup="finish-project">Finish</button>
+        }
+    }
+    @if ((string)Session["role_name"] == "Customer" && project.status==1)
+    {
+    <button class="red-btn" data-project-id="@project.id" data-popup="assign-director">Assign To Director</button>
+    }
 }
 <section class="current-projects">
     <div class="container">
@@ -87,31 +132,52 @@
         </div>
     </div>
 </section>
+@if (project.Team != null)
+{
+    <section class="current-projects">
+        <div class="container">
+            <h2 class="section-title text-left">
+                Team
+            </h2>
+            <div class="cards">
+                @foreach (var TeamMember in project.Team.TeamMembers)
+                {
+                    <div class="card">
+                        <div class="image">
+                            <div class="background"></div>
+                            @if (project.User.picture == null)
+                            {
+                                <img src="~/Content/img/users/default.gif">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/users/@project.User.picture">
+                            }                            
+                            <div class="options">
+                                @if (project.status == 2 && ((string)Session["role_name"] == "Director"|| (string)Session["role_name"] == "Team Leader")&&(TeamMember.User.Role.name=="Trainee"|| (TeamMember.User.Role.name == "Team Leader"&&(string)Session["role_name"]=="Director")))
+                                {
+                                    <a data-popup="remove-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                }
+                                @if (project.status == 3 && TeamMember.User.Role.name != "Director" && ((string)Session["role_name"] == "Director" || ((string)Session["role_name"] == "Team Leader") && TeamMember.User.Role.name != "Team Leader"))
+                                {
+                                    <a data-popup="rate-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-star"></i></button></a>
+                                }
 
-<section class="current-projects">
-    <div class="container">
-        <h2 class="section-title text-left">
-            Team
-        </h2>
-        <div class="cards">
-            <div class="card">
-                <div class="image">
-                    <div class="background"></div>
-                    <img src="~/Content/img/users/default.gif">
-                    <div class="options">
-                        <a data-popup="rate-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-star"></i></button></a>
-                        <a data-popup="remove-member"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
-                        <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                                <a href="/User/Profile/@TeamMember.user_id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h3>@TeamMember.User.first_name @TeamMember.User.last_name</h3>
+                            <h4>@TeamMember.User.Role.name</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="caption">
-                    <h3>Karim Khamiss</h3>
-                    <h4>Marketing Director</h4>
-                </div>
+                }
+                
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+
 @section scripts
     {
     <script>
