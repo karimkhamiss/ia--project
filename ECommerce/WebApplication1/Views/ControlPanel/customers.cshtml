@@ -41,7 +41,11 @@
                                 <img src="~/Content/img/users/@customer.picture">
                             }
                             <div class="options">
-                                <a data-popup="delete-user" data-id="@customer.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+
+                                @if ((string)Session["role_name"] == "Admin")
+                                {
+                                    <a data-popup="delete-user" data-user-id="@customer.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                }   
                                 <a href="/User/Profile/@customer.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
                             </div>
                         </div>

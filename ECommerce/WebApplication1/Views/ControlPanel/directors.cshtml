@@ -46,7 +46,7 @@
                         <div class="options">
                             @if((string)Session["role_name"] == "Admin")
                             {
-                                <a data-popup="delete-user" data-id="@director.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                <a data-popup="delete-user" data-user-id="@director.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
                             }
                             <a href="/User/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
                         </div>

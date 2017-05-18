@@ -63,13 +63,11 @@ namespace Ecommerce.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("../");
         }
-        public ActionResult Update(int id)
+        public void Delete(int user_id)
         {
-            User x = db.Users.Find(id);
-            if (x == null)
-                return View("Not Found");
-            else
-                return View(x);
+            User user = db.Users.Find(user_id);
+            db.Users.Remove(user);
+            db.SaveChanges();
         }
     }
 }

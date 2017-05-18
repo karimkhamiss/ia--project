@@ -9,6 +9,10 @@ $(document).ready(function(){
                 var project_id = $(this).attr("data-project-id")
                 $("#" + popup + "-popup input[name='project_id']").val(project_id);
             }
+            if (this.hasAttribute('data-user-id')) {
+                var user_id = $(this).attr("data-user-id")
+                $("#" + popup + "-popup input[name='user_id']").val(user_id);
+            }
             $(".background").fadeIn(200,function(){
                 $("#"+popup+"-popup").css("top","65px");
             })
