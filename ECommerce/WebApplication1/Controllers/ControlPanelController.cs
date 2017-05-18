@@ -55,7 +55,28 @@ namespace Ecommerce.Controllers
         }
         public ActionResult projects()
         {
-            return View();
+            List<object> projects = new List<object>();
+            User user = db.Users.Find(Convert.ToInt32(Session["user_id"]));
+            if ((string)Session["role_name"]=="Admin")
+            {
+                projects.Add(db.Projects.ToList());
+            }
+            else if((string)Session["role_name"]=="Customer")
+            {
+                projects.Add(user.Projects.ToList());
+            }
+            else
+            {
+                if(user.TeamMembers.Count()>0)
+                {
+                    foreach (var TeamMember in user.TeamMembers)
+                    {
+                        projects.Add(TeamMember.Team.Projects.ToList());
+                    }
+                }
+               
+            }
+            return View(projects);
         }
     }
 }

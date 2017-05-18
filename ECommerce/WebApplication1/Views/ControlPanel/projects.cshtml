@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Projects";
 }
+@model IEnumerable<object>
+@{
+    List<WebApplication1.Models.Project> projects = Model.ToArray()[0] as List<WebApplication1.Models.Project>;
+}
 @section popups
 {
     @Html.Partial("../forms/projects/add")
@@ -31,105 +35,63 @@
             </button>
             <div class="clearfix"></div>
             <div class="cards">
-                <div class="card">
-                    <div class="image">
-                        <div class="background"></div>
-                        <img src="~/Content/img/project.jpg">
-                        <!--<img src="~/Content/img/projects/default.jpg">-->
-                        <div class="options">
-                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
-                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
-                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                @foreach (var project in projects)
+                {
+                    <div class="card">
+                        <div class="image">
+                            <div class="background"></div>
+                            @if (project.picture == null)
+                            {
+                                <img src="~/Content/img/project.jpg">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/projects/@project.picture">
+
+                            }
+                            <div class="options">
+                                <a href="/Project/Profile/@project.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="caption">
-                        <h3>Project Title</h3>
-                        <div class="customer-info">
-                            <a href="#">
-                                <div class="info fl-left">
-                                    <img src="~/Content/img/users/default.gif">
-                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
-                                    <span class="dark-fg-color">Karim Khamiss</span>
+                        <div class="caption">
+                            <h3>@project.title</h3>
+                            <div class="customer-info">
+                                <a href="/User/Profile/@project.User.id">
+                                    <div class="info fl-left">
+                                        @if (project.User.picture == null)
+                                        {
+                                            <img src="~/Content/img/users/default.gif" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/img/users/@project.User.picture" alt="">
+                                        }
+                                        <span class="dark-fg-color">@project.User.first_name @project.User.last_name</span>
+                                    </div>
+                                </a>
+                                <div class="date fl-right">
+                                    <span class="grey-fg-color">2 Days Ago</span>
                                 </div>
-                            </a>
-                            <div class="date fl-right">
-                                <span class="grey-fg-color">2 Days Ago</span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="status text-center">
-                                <span class="delivered">Delivered</span>
-                                <!--<span class="on-progress">On Progress</span>-->
-                                <!--<span class="not-assigned">Not Assigned</span>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="image">
-                        <div class="background"></div>
-                        <img src="~/Content/img/project.jpg">
-                        <!--<img src="~/Content/img/projects/default.jpg">-->
-                        <div class="options">
-                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
-                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
-                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
-                        </div>
-                    </div>
-                    <div class="caption">
-                        <h3>Project Title</h3>
-                        <div class="customer-info">
-                            <a href="#">
-                                <div class="info fl-left">
-                                    <img src="~/Content/img/users/default.gif">
-                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
-                                    <span class="dark-fg-color">Karim Khamiss</span>
+                                <div class="clearfix"></div>
+                                <div class="status text-center">
+                                    @if (project.status == 1)
+                                    {
+                                        <span class="not-assigned">Not Assigned</span>
+                                    }
+                                    else if (project.status == 2)
+                                    {
+                                        <span class="on-progress">On Progress</span>
+                                    }
+
+                                    else if (project.status == 3)
+                                    {
+                                        <span class="delivered">Delivered</span>
+                                    }
                                 </div>
-                            </a>
-                            <div class="date fl-right">
-                                <span class="grey-fg-color">2 Days Ago</span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="status text-center">
-                                <!--<span class="delivered">Delivered</span>-->
-                                <span class="on-progress">On Progress</span>
-                                <!--<span class="not-assigned">Not Assigned</span>-->
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="image">
-                        <div class="background"></div>
-                        <img src="~/Content/img/project.jpg">
-                        <!--<img src="~/Content/img/projects/default.jpg">-->
-                        <div class="options">
-                            <a data-popup="delete-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
-                            <a data-popup="update-project"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-pencil"></i></button></a>
-                            <a href="/Project/Profile"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
-                        </div>
-                    </div>
-                    <div class="caption">
-                        <h3>Project Title</h3>
-                        <div class="customer-info">
-                            <a href="#">
-                                <div class="info fl-left">
-                                    <img src="~/Content/img/users/default.gif">
-                                    <!--<img  src="~/Content/img/users/default.gif" alt="">-->
-                                    <span class="dark-fg-color">Karim Khamiss</span>
-                                </div>
-                            </a>
-                            <div class="date fl-right">
-                                <span class="grey-fg-color">2 Days Ago</span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="status text-center">
-                                <!--<span class="delivered">Delivered</span>-->
-                                <!--<span class="on-progress">On Progress</span>-->
-                                <span class="not-assigned">Not Assigned</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
