@@ -71,39 +71,114 @@
         <button class="red-btn" data-popup="assign-project">Assign Project</button>
         }
  }
-<section class="current-projects">
-    <div class="container">
-        <h2 class="section-title text-left">
-            Current Projects
-        </h2>
-        <div class="cards">
-            <div class="card">
-                <div class="image">
-                    <div class="background"></div>
-                    <img src="~/Content/img/project.jpg">
-                    <div class="options">
-                        <a href="project-profile.html"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
-                    </div>
-                </div>
-                <div class="caption">
-                    <h3>Project Title</h3>
-                    <div class="customer-info">
-                        <a href="user-profile.html">
-                            <div class="info fl-left">
-                                <img src="~/Content/img/users/default.gif">
-                                <span class="dark-fg-color">Karim Khamiss</span>
+@if (user.TeamMembers.Where(teammember=>teammember.Team.Project.status==2).Count() > 0)
+{
+    <section class="current-projects">
+        <div class="container">
+            <h2 class="section-title text-left">
+                Current Projects
+            </h2>
+            <div class="cards">
+            @foreach (var TeamMember in user.TeamMembers.Where(teammember => teammember.Team.Project.status == 2))
+                {
+                    <div class="card">
+                        <div class="image">
+                            <div class="background"></div>
+                            @if (TeamMember.Team.Project.picture == null)
+                            {
+                                <img src="~/Content/img/projects/default.jpg">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/projects/@TeamMember.Team.Project.picture">
+                            }                            
+                            <div class="options">
+                                <a href="/Project/Profile/@TeamMember.Team.project_id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
                             </div>
-                        </a>
-                        <div class="date fl-right">
-                            <span class="grey-fg-color">2 Days Ago</span>
                         </div>
-                        <div class="clearfix"></div>
+                        <div class="caption">
+                            <h3>@TeamMember.Team.Project.title</h3>
+                            <div class="customer-info">
+                                <a href="/User/Profile/@TeamMember.Team.Project.user_id">
+                                    <div class="info fl-left">
+                                        @if (TeamMember.Team.Project.User.picture == null)
+                                        {
+                                            <img src="~/Content/img/users/default.gif">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/img/users/@TeamMember.Team.Project.User.picture">
+                                        }                                            
+                                        <span class="dark-fg-color">@TeamMember.Team.Project.User.first_name @TeamMember.Team.Project.User.last_name</span>
+                                    </div>
+                                </a>
+                                <div class="date fl-right">
+                                    <span class="grey-fg-color">2 Days Ago</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
+                
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+@if (user.TeamMembers.Where(teammember => teammember.Team.Project.status == 3).Count() > 0)
+{
+    <section class="current-projects">
+        <div class="container">
+            <h2 class="section-title text-left">
+                Previous Projects
+            </h2>
+            <div class="cards">
+                @foreach (var TeamMember in user.TeamMembers.Where(teammember => teammember.Team.Project.status == 3))
+                {
+                    <div class="card">
+                        <div class="image">
+                            <div class="background"></div>
+                            @if (TeamMember.Team.Project.picture == null)
+                            {
+                                <img src="~/Content/img/projects/default.jpg">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/projects/@TeamMember.Team.Project.picture">
+                            }
+                            <div class="options">
+                                <a href="/Project/Profile/@TeamMember.Team.project_id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h3>@TeamMember.Team.Project.title</h3>
+                            <div class="customer-info">
+                                <a href="/User/Profile/@TeamMember.Team.Project.user_id">
+                                    <div class="info fl-left">
+                                        @if (TeamMember.Team.Project.User.picture == null)
+                                        {
+                                            <img src="~/Content/img/users/default.gif">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/img/users/@TeamMember.Team.Project.User.picture">
+                                        }
+                                        <span class="dark-fg-color">@TeamMember.Team.Project.User.first_name @TeamMember.Team.Project.User.last_name</span>
+                                    </div>
+                                </a>
+                                <div class="date fl-right">
+                                    <span class="grey-fg-color">2 Days Ago</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+}
 @section scripts
     {
 

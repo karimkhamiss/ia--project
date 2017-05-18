@@ -16,6 +16,7 @@
     <div class="container-fluid">
         <h2 class="section-title">
             Projects
+            @ViewBag.test
         </h2>
         <div class="projects-contents">
             <div class="input-container col-md-7">
@@ -50,6 +51,10 @@
 
                             }
                             <div class="options">
+                                @if (project.status == 1)
+                                {
+                                    <a data-popup="delete-project" data-project-id="@project.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-close"></i></button></a>
+                                }
                                 <a href="/Project/Profile/@project.id"><button class="sm-btn red-btn rounded-btn"><i class="fa fa-eye"></i></button></a>
                             </div>
                         </div>

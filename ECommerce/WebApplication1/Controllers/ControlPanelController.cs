@@ -67,7 +67,7 @@ namespace Ecommerce.Controllers
             }
             else
             {
-                if(user.TeamMembers.Count()>0)
+                if (user.TeamMembers.Count()>0)
                 {
                     foreach (var TeamMember in user.TeamMembers)
                     {

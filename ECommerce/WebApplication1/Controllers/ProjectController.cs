@@ -16,5 +16,11 @@ namespace Ecommerce.Controllers
             var project = db.Projects.Find(id);
             return View(project);
         }
+        public void Delete(int project_id)
+        {
+            Project project = db.Projects.Find(project_id);
+            db.Projects.Remove(project);
+            db.SaveChanges();
+        }
     }
 }
